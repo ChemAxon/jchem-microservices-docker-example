@@ -2,8 +2,8 @@
 
 ## Prerequesets
 
-* install _docker_
-* install _docker-compose_
+* install **docker**
+* install **docker-compose**
 * copy `jws_unix_19.1.tar.gz` to folder
 * copy `license.cxl` to folder
 
