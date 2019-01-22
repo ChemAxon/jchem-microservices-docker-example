@@ -1,0 +1,61 @@
+version: '3'
+services:
+  jws-config:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-config/run-jws-config
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/"
+  jws-discovery:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-discovery/run-jws-discovery
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/"
+  jws-calculations:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-calculations/run-jws-calculations
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/" 
+    ports:
+      - "8084:8064"
+  jws-db:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-db/run-jws-db
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/" 
+    ports:
+      - "8082:8062"
+  jws-io:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-io/run-jws-io
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/" 
+    ports:
+      - "8081:8061"
+  jws-structure:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-structure/run-jws-structure
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/" 
+    ports:
+      - "8083:8063"
+  jws-gateway:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-gateway/run-jws-gateway
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/" 
+    ports:
+      - "8080:8080"
