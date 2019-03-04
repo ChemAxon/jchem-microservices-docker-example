@@ -1,6 +1,6 @@
 # example docker for JWS
 
-## Prerequesets
+## Prerequisites
 
 * install **docker**
 * install **docker-compose**
