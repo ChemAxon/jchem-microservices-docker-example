@@ -9,6 +9,10 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/"
     ports:
       - "8888:8888"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+      - "config:/opt/chemaxon/jws/jws-config/common-config"
   jws-discovery:
     build: .
     image: cxn/jws
@@ -18,6 +22,9 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/"
     ports:
       - "8761:8761"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
   jws-calculations:
     build: .
     image: cxn/jws
@@ -27,6 +34,10 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/" 
     ports:
       - "8084:8064"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+      - "license:/opt/chemaxon/jws/license"
   jws-db:
     build: .
     image: cxn/jws
@@ -36,6 +47,11 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/" 
     ports:
       - "8082:8062"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+      - "dbdata:/opt/chemaxon/jws/jws-db/data/"
+      - "license:/opt/chemaxon/jws/license"
   jws-io:
     build: .
     image: cxn/jws
@@ -45,6 +61,10 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/" 
     ports:
       - "8081:8061"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+      - "license:/opt/chemaxon/jws/license"
   jws-structure:
     build: .
     image: cxn/jws
@@ -54,6 +74,23 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/" 
     ports:
       - "8083:8063"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+      - "license:/opt/chemaxon/jws/license"
+  jws-markush:
+    build: .
+    image: cxn/jws
+    command: /opt/chemaxon/jws/jws-markush/run-jws-markush
+    environment: 
+      - "EUREKA_URI=http://jws-discovery:8761/"
+      - "CONFIG_SERVER_URI=http://jws-config:8888/" 
+    ports:
+      - "8085:8065"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+      - "license:/opt/chemaxon/jws/license"
   jws-gateway:
     build: .
     image: cxn/jws
@@ -63,3 +100,12 @@ services:
       - "CONFIG_SERVER_URI=http://jws-config:8888/" 
     ports:
       - "8080:8080"
+    restart: unless-stopped
+    volumes:
+      - "logdata:/opt/chemaxon/jws/logs"
+    
+volumes:
+   logdata:
+   dbdata:
+   license:
+   config:
