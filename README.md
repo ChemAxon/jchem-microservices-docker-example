@@ -4,7 +4,7 @@
 
 * install **docker**
 * install **docker-compose**
-* copy `jws_unix_19.10.tar.gz` to folder (Download it from here: [JChem Micorservices 19.10](https://chemaxon.com/download?dl=%2Fdata%2Fdownload%2Fjws%2F19.10.0%2Fjws_unix_19.10.tar.gz))
+* copy `jws_unix_19.10.tar.gz` to folder (Download it from here: [JChem Micorservices 19.15](https://chemaxon.com/download?dl=%2Fdata%2Fdownload%2Fjws%2F19.15.0%2Fjws_unix_19.15.tar.gz))
 * copy `license.cxl` to folder
 
 ## How to run
