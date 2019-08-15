@@ -99,7 +99,7 @@ services:
       - "EUREKA_URI=http://jws-discovery:8761/"
       - "CONFIG_SERVER_URI=http://jws-config:8888/" 
     ports:
-      - "8070:8080"
+      - "8080:8080"
     restart: unless-stopped
     volumes:
       - "logdata:/opt/chemaxon/jws/logs"
