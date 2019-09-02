@@ -16,7 +16,7 @@
 The above setup has the following volumes:
 * `dbdata` to save molecules uploaded to `jws-db`
 * `logdata` where you can find all the logs
-* `config` holds all the configurations for the application for more information please se our [documentation](https://docs.chemaxon.com/display/docs/JChem+Microservices)
+* `config` holds all the configurations for the application for more information please see our [documentation](https://docs.chemaxon.com/display/docs/JChem+Microservices)
 * `license` is the volume to share the `license.cxl` file between containers
 
 If you want to change any JVM arguments you can pass them to the executables with a `-J` prefix, like:
