@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM adoptopenjdk/openjdk8
+FROM openjdk:8u181-jre-stretch
 
 ADD jws_unix_19.15.tar.gz /opt/chemaxon/
 COPY license.cxl /opt/chemaxon/jws/license/license.cxl
