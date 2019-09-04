@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM openjdk:8u181-jre-stretch
+FROM adoptopenjdk:8u222-b10-jdk-hotspot-bionic
+
+RUN apt update && apt install -y libfontconfig1 && rm -rf /var/lib/apt/lists/*
 
 ADD jws_unix_19.15.tar.gz /opt/chemaxon/
 COPY license.cxl /opt/chemaxon/jws/license/license.cxl
